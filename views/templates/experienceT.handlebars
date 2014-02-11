@@ -1,0 +1,35 @@
+<div>This is my CV!</div>
+<br>
+
+{{#each experiences}}
+	{{#if category}}
+		<div>category: {{category}}</div>
+	{{/if}}
+	{{#if organization}}
+		<div>organization: {{organization}}</div>
+	{{/if}}
+	{{#if place}}
+		<div>place: {{place}}</div>
+	{{/if}}
+	{{#if date}}
+		<div>date: {{date}}</div>
+	{{/if}}
+	{{#each positions}}
+		{{#if title}}
+			<div>title: {{this.title}}</div>
+		{{/if}}
+		{{#if activities}}
+			{{#each activities}}
+				<div>activity: {{this}}</div>
+			{{/each}}
+		{{/if}}
+		{{#if detailsList}}
+			{{#each detailsList}}
+				</div>details: {{this}}<br></div>
+			{{/each}}
+		{{/if}}
+	{{/each}}
+{{/each}}
+<div> </div>
+
+<div id='1'>That was my CV!</div>

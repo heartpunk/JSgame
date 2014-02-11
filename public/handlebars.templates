@@ -1,0 +1,179 @@
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['cv'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "";
+  buffer += "\n<div>"
+    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
+    + "</div>\n";
+  return buffer;
+  }
+
+  buffer += "<head>\n<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>\n<script src=\"http://code.jquery.com/jquery-1.9.1.js\"></script>\n</head>\n\n<a href=\"http://localhost:8080\">Main Page</a>\n";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.number), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n</div>TWO! ";
+  if (stack1 = helpers.two) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.two); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n\n<div class=\"title\">\n	<div>Cameron Pittman</div>\n</div>\n<div class=\"subtitle\">\n	<div>Seattle, WA</div>\n	<div>email: cameron@[this website's url]</div>\n	<div>url: cameronpittman.com</div>\n	<div>blog: physicswithportals.com</div>\n</div>\n<br>\n<div class=\"container_12\">\n	<div id=\"belmont_button\" class=\"button\">\n		<div class=\"major_heading prefix_1\">\n			Education\n		</div>\n		<div class=\"minor_heading grid_6 prefix_1\">\n			Belmont University\n		</div>\n		<div class=\"grid_4 right\">\n			Nashville, TN\n		</div>\n		<br>\n		<div class=\"grid_5 prefix_1\">\n			MA, Teaching\n		</div>\n		<div class=\"grid_5 right\">\n			2011\n		</div>\n	</div>\n	<br>\n	<script>\n		$( \"#belmont_button\" ).click(function() {\n	  $( \"#belmont_image\" ).slideToggle( \"slow\" );\n	});\n	</script>\n	<div id=\"belmont_image\" class=\"grid_12 hidden_description\">\n	</div>\n	<br>\n	<div class=\"minor_heading grid_6 prefix_1\">\n		Vanderbilt University\n	</div>\n	<div class=\"grid_4 right\">\n		Nashville, TN\n	</div>\n	<br>\n	<div class=\"grid_5 prefix_1\">\n		BA, Physics\n	</div>\n	<div class=\"grid_5 right\">\n		2009\n	</div>\n	<br>\n	<div class=\"prefix_1\">\n		<cite>Honors:</cite> Astronomy\n	</div>\n	<div class=\"prefix_1\">\n		<cite>Study Abroad:</cite> University of Adelaide, Australia (2008)\n	</div>\n	<br>\n	<div class=\"major_heading prefix_1\">\n		Professional Exprience\n	</div>\n	<div class=\"minor_heading grid_7 prefix_1\">\n		LEAD Academy Charter High School\n	</div>\n	<div class=\"grid_3 right\">\n		Nashville, TN\n	</div>\n	<div class=\"grid_6 prefix_1\">\n		Physics and Chemistry Teacher\n	</div>\n	<div class=\"grid_4 right\">\n		2012-2013\n	</div>\n	<br>\n	<div class=\"description grid_7\">\n		Maintains rigorous standards and expectations to fulfill LEAD’s mission of sending every student to a 4-year college or university.\n	</div>\n</div>\n <script type=\"text/javascript\">\n	$( \".hidden_description\" ).hide();\n	$( \".hidden_description\" ).click(function() {\n	  $( this ).slideToggle( \"slow\" );\n	});\n</script>";
+  return buffer;
+  });
+templates['experienceT'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n	";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.category), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.organization), {hash:{},inverse:self.noop,fn:self.program(4, program4, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.place), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.date), {hash:{},inverse:self.noop,fn:self.program(8, program8, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.positions), {hash:{},inverse:self.noop,fn:self.program(10, program10, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n		<div>category: ";
+  if (stack1 = helpers.category) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.category); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n	";
+  return buffer;
+  }
+
+function program4(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n		<div>organization: ";
+  if (stack1 = helpers.organization) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.organization); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n	";
+  return buffer;
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n		<div>place: ";
+  if (stack1 = helpers.place) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.place); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n	";
+  return buffer;
+  }
+
+function program8(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n		<div>date: ";
+  if (stack1 = helpers.date) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = (depth0 && depth0.date); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</div>\n	";
+  return buffer;
+  }
+
+function program10(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n		";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.title), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.activities), {hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.detailsList), {hash:{},inverse:self.noop,fn:self.program(16, program16, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n	";
+  return buffer;
+  }
+function program11(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n			<div>title: "
+    + escapeExpression(((stack1 = (depth0 && depth0.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</div>\n		";
+  return buffer;
+  }
+
+function program13(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n			";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.activities), {hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		";
+  return buffer;
+  }
+function program14(depth0,data) {
+  
+  var buffer = "";
+  buffer += "\n				<div>activity: "
+    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
+    + "</div>\n			";
+  return buffer;
+  }
+
+function program16(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n			";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.detailsList), {hash:{},inverse:self.noop,fn:self.program(17, program17, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n		";
+  return buffer;
+  }
+function program17(depth0,data) {
+  
+  var buffer = "";
+  buffer += "\n				</div>details: "
+    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
+    + "<br></div>\n			";
+  return buffer;
+  }
+
+  buffer += "<div>This is my CV!</div>\n<br>\n\n";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.experiences), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n<div> </div>\n\n<div id='1'>That was my CV!</div>";
+  return buffer;
+  });
+templates['home'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"rpi-panel-container\">\n  <div class=\"rpi-panel row\">\n    <div class=\"rpi-panel-col column small-4\">\n        <a href=\"/images/CP-headshot-large.jpg\"><img src=\"/images/CP-headshot-small.jpg\" alt=\"Cameron Pittman\"></a>\n    </div>\n    <div class=\"rpi-panel-col text-left column small-8 rpi-text-white\">\n        <h2w>Cameron Pittman</h2w><br><br>Former high school science teacher. Specialized in teaching physics with <em>Portal 2</em>.<br>Currently a software engineer in training.<br>For more information, <a href=\"/resume\">check out my resume</a> or <a href=\"http://physicswithportals.com\">blog</a>.\n      </div>\n  </div>\n</div>\n\n<div id=\"outreach\" class=\"rpi-panel-container\">\n  <div class=\"rpi-panel row\">\n    <div class=\"rpi-panel-col column small-12\">\n      <h2>Professional Outreach<h2>\n    </div>\n    <div class=\"rpi-panel-col column small-12 text-left\">\n      <h3>- start<br>\n      - listing<br>\n      - things<br>\n      - here</h3>\n    </div>\n  </div>\n</div>\n\n<div id=\"pwp\" class=\"rpi-panel-container\">\n  <div class=\"rpi-panel\">\n    <div class=\"row\">\n      <div class=\"rpi-panel-col column small-12\">\n        <h2>Physics with Portals</h2>\n      </div>\n      <div class=\"rpi-panel-col column small-8\">\n        <ul data-orbit>\n          <li>\n            <img src=\"/images/pwp/p01.jpg\" alt=\"slide 1\" />\n            <div class=\"orbit-caption\">\n              My old classroom on Physics Parents Night.\n            </div>\n          </li>\n          <li>\n            <img src=\"/images/pwp/p02.jpg\" alt=\"slide 2\" />\n            <div class=\"orbit-caption\">\n              Explaining how my students will be using <em>Portal 2</em> in class.\n            </div>\n          </li>\n          <li>\n            <img src=\"/images/pwp/p03.jpg\" alt=\"slide 3\" />\n            <div class=\"orbit-caption\">\n              Students showing off their physics knowledge in front of parents!\n            </div>\n          </li>\n        </ul> \n      </div>\n      <div class=\"rpi-panel-col text-left column small-4\">\n        In the fall of 2012, I taught physics with the video game <em>Portal 2</em>. My students explored physics using the Portal 2 Puzzle Maker, an easy-to-use sandbox editor that allowed them to design, build and analyze physics experiments within minutes.<br><br>Students experimented everything from the relationship between velocity and acceleration to conservation of energy and projectile motion.\n      </div>\n    </div>\n    <div class=\"row rpi-panel-subrow\">\n      <div class=\"rpi-panel-col text-left column small-4\">Before and throughout the semester, I blogged and created a video series called Physics with Portals demonstrating how physics teachers and students could take advantage of the Puzzle Maker in class.\n      </div>\n      <div class=\"rpi-panel-col column small-8\"><iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/MSisAXBipgM\" frameborder=\"0\" allowfullscreen></iframe>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div id=\"lb\" class=\"rpi-panel-container\">\n  <div class=\"rpi-panel row\">\n    <div class=\"rpi-panel-col column small-12\">\n      <h2>Engineering and LearnBIG</h2>\n    </div>\n    <div style=\"background-color: white\" class=\"rpi-panel-col column push-4 small-4\">\n      <img src=\"images/logo-LearnBIG2.png\" alt=\"LearnBIG\">\n    </div>\n    <div class=\"rpi-panel-col column rpi-panel-subrow small-12\">\n      LearnBIG connects people to online educational resources. As a tech-savvy former teacher, I came to LearnBIG as a content expert. I led a team that collected and organized information on an initial database of more than 12,000 online educational resources.\n    </div>\n    <div class=\"rpi-panel-col rpi-panel-subrow column small-8\">\n      [insert screenshots from ST2, MW]\n    </div>\n    <div class=\"rpi-panel-col rpi-panel-subrow column text-left small-4\">\n      During and following the initial content push, it became clear that the company had a business need for engineering. Despite limited experience with programming at the outset of LearnBIG, my role has shifted to 80% engineering. I've taken on web development on a NodeJS server using HandlebarsJS, written scripts with Python to validate our data, maintained and analyzed our MySQL backend, and studied basic data structures in C++ along the way.\n    </div>\n  </div>\n</div>\n\n\n<div id=\"wbsc\" class=\"rpi-panel-container\">\n  <div class=\"rpi-panel row\">\n    <div class=\"rpi-panel-col column small-12\">\n      <h2>The Weather Balloon Space Camera</h2>\n    </div>\n    <div class=\"rpi-panel-col column small-12\">\n      <iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/ykT6hUduEIc\" frameborder=\"0\" allowfullscreen></iframe>\n    </div>\n    <div class=\"rpi-panel-col column rpi-panel-subrow small-12\">\n      In my first year of teaching, I worked with another teacher and three students to build and launch the Weather Balloon Space Camera, a high altitude science experiment shamelessly copied from this group.*******need link********\n    </div>\n    <div class=\"rpi-panel-col rpi-panel-subrow column small-12\">\n      [slideshow from camera with annotations]\n    </div>\n  </div>\n</div>\n\n<div id=\"about\" class=\"rpi-panel-container rpi-text-white\">\n  <div class=\"rpi-panel row\">\n    <div class=\"rpi-panel-col column small-12\">\n      <h2w>About this site</h2w>\n    </div>\n    <div class=\"rpi-panel-col column small-4\">\n        <img src=\"/images/CP-headshot-small.jpg\" alt=\"Cameron Pittman\" href=\"/images/CP-headshot-large.jpg\">\n    </div>\n    <div class=\"rpi-panel-col column small-8\">\n        Why is this light teal? \n    </div>\n  </div>\n</div>";
+  });
+templates['testf'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "";
+
+
+  return buffer;
+  });
+})();
