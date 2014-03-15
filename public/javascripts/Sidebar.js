@@ -68,9 +68,7 @@ var Sidebar = new Class({
     this.hidden = true;
     Layout.resize();
   },
-
-  hide();
-
+  
   show: function() {
     $('content').setStyle('marginLeft', this.contentMargin);
     this.element.show();
