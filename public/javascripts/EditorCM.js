@@ -47,7 +47,11 @@ var MooShellEditor = new Class({
     var is_disallowed = (disallowedPlatforms.contains(Browser.Platform.name));
     if (this.options.useCodeMirror && !is_disallowed) {
       // hide textarea
-      this.element.hide();
+      try {
+        this.element.hide();
+      } catch(err) {
+        // do nothing, i don't care
+      }
       // prepare settings
       if (!this.options.codeMirrorOptions.stylesheet && this.options.stylesheet) {
         this.options.codeMirrorOptions.stylesheet = this.options.stylesheet.map(function(path) {
@@ -58,7 +62,11 @@ var MooShellEditor = new Class({
         this.options.codeMirrorOptions.path = codemirrorpath + 'js/';
       }
       if (!this.options.codeMirrorOptions.content) {
-        this.options.codeMirrorOptions.content = this.element.get('value');
+        try {
+          this.options.codeMirrorOptions.content = this.element.get('value');
+        } catch(err) {
+          // do nothing
+        }
       }
 
       var parentNode = this.element.getParent();

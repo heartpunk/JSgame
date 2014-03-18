@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cameron Pittman</title>
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <div id="menu_bar">
+      <div class="slider">
+        <div id="vertSlider"></div>
+      </div>
+      <div class="slider">
+        <div id="horizSlider"></div>
+      </div>
+    </div>
+
+    <div id="top_left" style="height: 50vh; width: 49vw" class="pane tops lefts">
+      <div id="canvas_container">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+
+    <div id="top_right" style="height: 50vh; width: 49vw" class="pane tops rights">
+      <div class="video_container">
+        <iframe width="560" height="315" src="//www.youtube.com/embed/MSisAXBipgM" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div id="bottom_left" style="height: 50vh; width: 49vw" class="pane bottoms lefts">
+      Bottom Left
+    </div>
+
+    <div id="bottom_right" style="height: 50vh; width: 49vw" class="pane bottoms rights">
+      <iframe id="wiki" src="https://en.m.wikipedia.org/wiki/Projectile_motion#The_initial_velocity"></iframe>
+    </div>
+
+    <script>
+      // to fit iframe correctly
+      $("#wiki").attr("height", $(".bottoms").innerHeight() );
+      $("#wiki").attr("width", $(".rights").innerWidth() );
+    </script>
+    <script src="/javascripts/PM.js"></script>
+    <script src="/javascripts/slider_resizer.js"></script>
+  </body>
+</html>

@@ -137,7 +137,11 @@ var MooShellActions = new Class({
         language = sel.getElement('option:selected').get('text'),
         type = sel.getElement('option:selected').get('data-mime-type');
 
-    editorClass.editor.setOption('mode', type);
+    try {
+      editorClass.editor.setOption('mode', type);
+    } catch(err) {
+      // do nothing
+    }
     // editorClass.updateCode();
 
     // editor.getWindow().getElement('.CodeMirror-wrapping').destroy();
@@ -146,7 +150,7 @@ var MooShellActions = new Class({
     //   language: language.toLowerCase()
     // });
 
-    Layout.editors[panel_name].setLabelName(language);
+    // Layout.editors[panel_name].setLabelName(language);
     window['panel_' + panel_name] = language.toLowerCase();
     this.showHideTidyUp();
     this.showHideJsLint();

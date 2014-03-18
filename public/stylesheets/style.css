@@ -1,0 +1,72 @@
+body, html {
+  margin: 0px;
+}
+
+.video_container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.video_container iframe,
+.video_container object,
+.video_container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+  width: 50%;
+  float: left;
+  display: inline-block;
+}
+
+.pane {
+  /*border-width: 1em;*/
+  border-color: gray;
+  border-style: solid;
+}
+
+#menu_bar {
+  background-color: blue;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+#top_left {
+  width: 49%;
+  display: inline-block;
+  height: 100%;
+  float: left;
+}
+
+#canvas_container {
+  height: 100%;
+}
+
+#top_right {
+  width: 49%;
+  display: inline-block;
+  float: left;
+}
+
+#bottom_left {
+  width: 49%;
+  display: inline-block;
+  float: left;
+}
+
+#bottom_right {
+  width: 49%;
+  display: inline-block;
+  float: left;
+}
+
+.pane iframe {
+  position: absolute;
+  /*width: 100%;*/
+  /*height: 100%;*/
+}

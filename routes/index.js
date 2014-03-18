@@ -38,3 +38,15 @@ exports.jsfiddle = function(req, res){
     res.end();
     });
 };
+
+exports.sliders = function(req, res){
+    fs = require( 'fs' );
+    fs.readFile('./views/sliders.html', function (err, html) {
+        if (err) {
+        throw err; 
+    }
+    res.writeHead( 200, { 'content-type': 'text/html' } );
+    res.write( html );
+    res.end();
+    });
+};
