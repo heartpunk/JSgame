@@ -30,7 +30,7 @@ if ( app.get( 'env' ) === 'development' ) {
 }
 
 app.get( '/', routes.index );
-app.get( '/ud_demo', routes.demo );
+// app.get( '/ud_demo', routes.demo );
 app.get( '/jsfiddle', routes.jsfiddle );
 app.get( '/sliders', routes.sliders );
 

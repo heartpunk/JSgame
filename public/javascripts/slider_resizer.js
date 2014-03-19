@@ -1,3 +1,5 @@
+// TODO: account for space sliders take up at the top of the screen
+
 $(function() {
   $( "#vertSlider" ).slider({
     orientation: "vertical",
@@ -14,7 +16,7 @@ $(function() {
 
       // resize canvas element
       $("#canvas").attr("height", $(".tops").innerHeight() );
-      respondCanvas();
+      Particle.drawCanvas();
 
       // resize bottom right iframe
       $("#wiki").attr("height", $(".bottoms").innerHeight() );
@@ -38,7 +40,7 @@ $(function() {
 
       // resize canvas element
       $("#canvas").attr("width", $(".lefts").innerWidth() );
-      respondCanvas();
+      Particle.drawCanvas();
 
       // resize bottom right iframe
       $("#wiki").attr("width", $(".rights").innerWidth() );

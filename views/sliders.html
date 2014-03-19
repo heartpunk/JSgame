@@ -32,7 +32,10 @@
     </div>
 
     <div id="bottom_left" style="height: 50vh; width: 49vw" class="pane bottoms lefts">
-      Bottom Left
+      <div class="big_text" style="">
+        Initial velocity is <form class="text_entry" action="javascript:Particle.drawCanvas();"><input type="text" id="velocity"></form> meters per second at 45 degrees.
+      </div>
+      <input type="button" onclick="javascript:Particle.initialize(); window.setInterval( function () {Particle.updateCanvas();    Particle.drawCanvas();}, 1000 / Particle.fps );">Go!</input>
     </div>
 
     <div id="bottom_right" style="height: 50vh; width: 49vw" class="pane bottoms rights">
