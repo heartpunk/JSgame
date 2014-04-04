@@ -1,71 +1,79 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var container = $(canvas).parent();
-// console.log(container);
 
-var Particle = {};
 var Canvas = {};
+var Particle = {};
+var Physics = {};
 
-Particle.fps = 60;
-Particle.frame = 0;
+Physics.initialize = function() {
+  Physics.gravity = -1;
+}
+
+Physics.changeX_pos = function(particle) {
+  return particle.x_pos + particle.x_vel;
+}
+
+Physics.changeY_posFreeFall = function(particle) {
+  return ( particle.y_pos * (Canvas.frame / Canvas.fps) ) + ( 0.5 * Physics.gravity * (Canvas.frame / Canvas.fps) * (Canvas.frame / Canvas.fps) );
+}
+
+Physics.boundaryStop = function(particle) {
+  if (particle.x_pos >= Canvas.x - 30) {
+      particle.x_vel = 0;
+      particle.x_pos = Canvas.x - 30;
+  }
+  if (particle.y_pos < 0) {
+    particle.y_pos = 30; // 30 is the size of the box
+  }
+}
+
+Particle.draw = function() {
+  ctx.rect(Particle.x_pos, (Canvas.y - Particle.y_pos), 30, 30);
+  ctx.fillStyle = 'yellow';
+  ctx.fill();
+}
 
 Particle.initialize = function() {
-  Particle.gravity = -1;
-
   Particle.x_pos = 0;
   Particle.y_pos = 0;
 
   Particle.initialVelocity = $("#velocity").val();
 
-  Particle.y_vel = Particle.initialVelocity * 0.7071 * 10;
   Particle.x_vel = 0.7071 * Particle.initialVelocity;
+  Particle.y_vel = Particle.initialVelocity * 0.7071 * 10;
 }
 
-Particle.calcPosition = function() {
-  
-  // // switching directions if the particle is at the edge of the canvas
-  // if(Particle.x_pos >= Canvas.x || Particle.x_pos < 0) {
-  //   Particle.x_vel *= -1;
-  // }
-  // if(Particle.y_pos >= Canvas.y || Particle.y_pos < 0) {
-  //   Particle.y_vel *= -1;
-  // }
-
-  // TODO: move into initialize
-  // if (initial conditions) {initialize} else {move sim along}
-  if (Particle.frame === 1) {
-    Particle.y_vel = Particle.initialVelocity * 0.7071 * 10;
-  } else {
-    Particle.y_vel = Particle.y_vel + Particle.gravity * (Particle.frame / Particle.fps);
-  }
-
-  // moving the particle's position
-  Particle.x_pos += Particle.x_vel;  
-  Particle.y_pos += Particle.y_vel;
-
-  // keeping the particle on screen.
-  if (Particle.x_pos >= Canvas.x - 30) {
-    Particle.x_vel = 0;
-    Particle.x_pos = Canvas.x - 30;
-  }
-  if (Particle.y_pos < 0) {
-    Particle.y_pos = 30; // 30 is the size of the box
-  }
+Particle.update = function() {
+  Particle.x_pos = Physics.changeX_pos(Particle);
+  Particle.y_pos = Physics.changeY_posFreeFall(Particle);
 }
 
-Particle.updateCanvas = function() {
-  
-  Particle.frame += 1;
+Canvas.initialize = function() {
+  Canvas.fps = 60;
+  Canvas.frame = 0;
 
+  ctx.font = "20px Calibri";
+  ctx.fillStyle = "#333333"; //white
+  ctx.textAlign = "center";
+  ctx.fillText("initialization text", (Canvas.x/2), (Canvas.y/2) );
+}
+
+Canvas.generateStatus = function(particle) {
+
+}
+
+Canvas.update = function() {
+  Canvas.frame += 1;
+  
   Canvas.x = container.width();
-  Canvas.y = container.height(); 
+  Canvas.y = container.height();
 
-  Particle.calcPosition();
-  
+  Canvas.displayText = Canvas.generateStatus(Particle);
 }
 
-Particle.drawCanvas = function() {
-  // ctx.clearRect(0, 0, canvas.width, canvas.height );
+Canvas.draw = function() {
+  ctx.clearRect(0, 0, Canvas.x, Canvas.y );
 
   canvas.setAttribute('width', $(container).innerWidth() - 4 ); //max width
   canvas.setAttribute('height', $(container).innerHeight() - 4); //max height
@@ -73,29 +81,37 @@ Particle.drawCanvas = function() {
   ctx.fillStyle = "#DDDDDD"; // grey
   ctx.fillRect( 0, 0, Canvas.x, Canvas.y ); // fill the canvas
   
-  // post text
-  // Particle.gravityText = "Gravity: "+ $("#gravity").val() + " meters per second squared";
-  // ctx.font = "20px Calibri";
-  // ctx.textAlign = "center";
-  // ctx.fillStyle = "#333333"; //white
-  // ctx.fillText(Particle.gravityText, (Canvas.x/2), (Canvas.y/2) );
-  
-  // draw a yellow box
+  ctx.textAlign = "center";
+  ctx.fillText("initialization text", (Canvas.x/2), (Canvas.y/2) );
 
-  // console.log(Particle.x_pos, Particle.y_pos);
-  ctx.rect(Particle.x_pos, (Canvas.y - Particle.y_pos), 30, 30);
-  ctx.fillStyle = 'yellow';
-  ctx.fill();
+  // on window resize, adjust canvas
+  $(window).resize( Canvas.draw() );
 }
 
-// animate movement
-// Particle.run = window.setInterval( function () {
-//   Particle.updateCanvas();
-//   Particle.drawCanvas();
-// }, 1000 / Particle.fps );
+var update = function() {
+  Particle.update();
+  Canvas.update();
+}
 
-// on window resize, adjust canvas
-$(window).resize( Particle.drawCanvas );
+var draw = function() {
+  Canvas.draw();
+  Particle.draw();
+}
 
-// initializing
-// Particle.run;
+var startGameLoop = function() {
+  window.setInterval( function() {
+    update();
+    draw();
+  }, 1000 / Particle.fps );
+}
+
+var endGameLoop = function() {
+  // make this
+}
+
+var setup = function() {
+  Canvas.initialize();
+  Physics.initialize();
+  Particle.initialize();
+  draw();
+}

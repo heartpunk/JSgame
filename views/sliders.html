@@ -33,9 +33,12 @@
 
     <div id="bottom_left" style="height: 50vh; width: 49vw" class="pane bottoms lefts">
       <div class="big_text" style="">
-        Initial velocity is <form class="text_entry" action="javascript:Particle.drawCanvas();"><input type="text" id="velocity"></form> meters per second at 45 degrees.
+        Initial velocity is <form class="text_entry"><input type="text" id="velocity"></form> meters per second at 45 degrees.
       </div>
       <input type="button" onclick="javascript:Particle.initialize(); window.setInterval( function () {Particle.updateCanvas();    Particle.drawCanvas();}, 1000 / Particle.fps );">Go!</input>
+      <div id="draggable" class="ui-widget-content">
+        <p>Drag me around</p>
+      </div>
     </div>
 
     <div id="bottom_right" style="height: 50vh; width: 49vw" class="pane bottoms rights">
@@ -46,6 +49,12 @@
       // to fit iframe correctly
       $("#wiki").attr("height", $(".bottoms").innerHeight() );
       $("#wiki").attr("width", $(".rights").innerWidth() );
+    </script>
+    <script>
+      // to create draggable elements
+      $(function() {
+        $( "#draggable" ).draggable();
+      });
     </script>
     <script src="/javascripts/PM.js"></script>
     <script src="/javascripts/slider_resizer.js"></script>
