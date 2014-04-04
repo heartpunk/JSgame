@@ -16,7 +16,7 @@ $(function() {
 
       // resize canvas element
       $("#canvas").attr("height", $(".tops").innerHeight() );
-      Particle.drawCanvas();
+      Canvas.draw();
 
       // resize bottom right iframe
       $("#wiki").attr("height", $(".bottoms").innerHeight() );
@@ -40,7 +40,7 @@ $(function() {
 
       // resize canvas element
       $("#canvas").attr("width", $(".lefts").innerWidth() );
-      Particle.drawCanvas();
+      Canvas.draw();
 
       // resize bottom right iframe
       $("#wiki").attr("width", $(".rights").innerWidth() );

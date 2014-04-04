@@ -7,34 +7,41 @@ var Particle = {};
 var Physics = {};
 
 Physics.initialize = function() {
+  // console.log("physics.initialize");
   Physics.gravity = -1;
 }
 
 Physics.changeX_pos = function(particle) {
+  console.log(particle.x_pos, particle.x_vel);
   return particle.x_pos + particle.x_vel;
 }
 
 Physics.changeY_posFreeFall = function(particle) {
-  return ( particle.y_pos * (Canvas.frame / Canvas.fps) ) + ( 0.5 * Physics.gravity * (Canvas.frame / Canvas.fps) * (Canvas.frame / Canvas.fps) );
+  var time = (Canvas.frame / Canvas.fps);
+  var deltaY = particle.y_vel * time + ( 0.5 * Physics.gravity * time * time );
+  // console.log(deltaY);
+  return particle.y_pos + deltaY;
 }
 
 Physics.boundaryStop = function(particle) {
   if (particle.x_pos >= Canvas.x - 30) {
-      particle.x_vel = 0;
       particle.x_pos = Canvas.x - 30;
+      particle.x_vel = 0;
   }
-  if (particle.y_pos < 0) {
+  if (particle.y_pos > Canvas.y) {
     particle.y_pos = 30; // 30 is the size of the box
   }
 }
 
 Particle.draw = function() {
-  ctx.rect(Particle.x_pos, (Canvas.y - Particle.y_pos), 30, 30);
+  // console.log("particle.draw");
+  // console.log(Particle.x_pos, Particle.y_pos)
   ctx.fillStyle = 'yellow';
-  ctx.fill();
+  ctx.fillRect(Particle.x_pos, (Canvas.y - Particle.y_pos), 30, 30);
 }
 
 Particle.initialize = function() {
+  // console.log("particle.initialize");
   Particle.x_pos = 0;
   Particle.y_pos = 0;
 
@@ -45,11 +52,14 @@ Particle.initialize = function() {
 }
 
 Particle.update = function() {
-  Particle.x_pos = Physics.changeX_pos(Particle);
-  Particle.y_pos = Physics.changeY_posFreeFall(Particle);
+  // console.log("Particle.update");
+  Particle.x_pos = Physics.changeX_pos(this);
+  Particle.y_pos = Physics.changeY_posFreeFall(this);
+  // console.log(Particle.x_pos, Particle.y_pos);
 }
 
 Canvas.initialize = function() {
+  // console.log("canvas.initialize");
   Canvas.fps = 60;
   Canvas.frame = 0;
 
@@ -59,20 +69,22 @@ Canvas.initialize = function() {
   ctx.fillText("initialization text", (Canvas.x/2), (Canvas.y/2) );
 }
 
-Canvas.generateStatus = function(particle) {
-
+Canvas.generatePositionStatus = function(particle) {
+  return "x: " + particle.x_pos + "\ny: " + particle.y_pos;
 }
 
 Canvas.update = function() {
+  // console.log("canvas.update");
   Canvas.frame += 1;
   
   Canvas.x = container.width();
   Canvas.y = container.height();
 
-  Canvas.displayText = Canvas.generateStatus(Particle);
+  Canvas.displayText = Canvas.generatePositionStatus(Particle);
 }
 
 Canvas.draw = function() {
+  // console.log("canvas.draw");
   ctx.clearRect(0, 0, Canvas.x, Canvas.y );
 
   canvas.setAttribute('width', $(container).innerWidth() - 4 ); //max width
@@ -81,28 +93,29 @@ Canvas.draw = function() {
   ctx.fillStyle = "#DDDDDD"; // grey
   ctx.fillRect( 0, 0, Canvas.x, Canvas.y ); // fill the canvas
   
-  ctx.textAlign = "center";
-  ctx.fillText("initialization text", (Canvas.x/2), (Canvas.y/2) );
-
-  // on window resize, adjust canvas
-  $(window).resize( Canvas.draw() );
+  ctx.fillText(Canvas.displayText, 50, 50 ); // message in the top left
 }
 
 var update = function() {
-  Particle.update();
+  // console.log("update");
   Canvas.update();
+  Particle.update();
 }
 
 var draw = function() {
+  // console.log("draw");
   Canvas.draw();
   Particle.draw();
+  // ctx.fill();
 }
 
 var startGameLoop = function() {
+  // console.log("startGameLoop");
+  quickSetup();
   window.setInterval( function() {
     update();
     draw();
-  }, 1000 / Particle.fps );
+  }, 1000 / Canvas.fps );
 }
 
 var endGameLoop = function() {
@@ -110,8 +123,16 @@ var endGameLoop = function() {
 }
 
 var setup = function() {
+  // console.log("setup");
   Canvas.initialize();
   Physics.initialize();
   Particle.initialize();
   draw();
 }
+
+var quickSetup = function() {
+  Canvas.initialize();
+  Particle.initialize();
+}
+
+setup();
