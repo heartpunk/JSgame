@@ -87,6 +87,8 @@ Canvas.draw = function() {
   // console.log("canvas.draw");
   ctx.clearRect(0, 0, Canvas.x, Canvas.y );
 
+  if (Particle.y_pos > Canvas.y) window.clearInterval(loop);
+
   canvas.setAttribute('width', $(container).innerWidth() - 4 ); //max width
   canvas.setAttribute('height', $(container).innerHeight() - 4); //max height
   
@@ -109,10 +111,12 @@ var draw = function() {
   // ctx.fill();
 }
 
+var loop;
+
 var startGameLoop = function() {
   // console.log("startGameLoop");
   quickSetup();
-  window.setInterval( function() {
+  loop = window.setInterval( function() {
     update();
     draw();
   }, 1000 / Canvas.fps );
